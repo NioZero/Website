@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NioZero</title>
-
+    @await Html.PartialAsync("_head_css.cshtml")
 </head>
 <body>
     <header>
@@ -19,6 +19,7 @@
             &copy; 2024 - NioZero - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Html.PartialAsync("_footer_scripts.cshtml")
+    @await Html.PartialAsync("_analytics.cshtml")
 </body>
 </html>
