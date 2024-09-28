@@ -1,0 +1,39 @@
+html {
+    font-size: 14px;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.principal {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.entries, .rightmenu {
+    padding: 15px;
+}
+
+.entries {
+    flex: 0 0 66.666%; /* 2/3 del ancho */
+}
+
+.rightmenu {
+    flex: 0 0 33.333%; /* 1/3 del ancho */
+    position: sticky;
+    top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .entries, .rightmenu {
+        flex: 0 0 100%; /* Cada columna toma todo el ancho disponible */
+    }
+
+    .rightmenu {
+        position: static; /* Evita que el menú sea sticky en dispositivos móviles */
+    }
+}
