@@ -5,10 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <UserSecretsId>9fe7a3de-5e5c-4256-9fca-c0c5b5e95435</UserSecretsId>
+        <RootNamespace>Web</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Include="NioZero.Data" />
+        <Using Include="Data" />
     </ItemGroup>
 
     <ItemGroup>

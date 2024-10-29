@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace NioZero.Web.Controllers;
+namespace Web.Controllers;
 
 [Route("~/")]
 public class HomeController() : Controller

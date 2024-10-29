@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NioZero.Data.Entities;
+using Data.Entities;
 
-namespace NioZero.Data;
+namespace Data;
 
 public class WebDbContext(DbContextOptions<WebDbContext> options) : DbContext(options)
 {

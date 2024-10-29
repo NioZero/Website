@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace NioZero.Data.Entities;
+namespace Data.Entities;
 
 public class BlogEntry : BaseEntity
 {
