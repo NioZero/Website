@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\NioZero.Data\NioZero.Data.csproj" />
+        <ProjectReference Include="..\data-access\data-access.csproj" />
     </ItemGroup>
 
 </Project>
