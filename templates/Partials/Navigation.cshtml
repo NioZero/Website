@@ -1,0 +1,12 @@
+@using PersonalSite.Core.Rendering
+@model RenderContext
+<nav class="site-nav" aria-label="Primary navigation">
+  <ul>
+    @foreach (var item in Model.Navigation)
+    {
+      <li>
+        <a class="@(item.IsActive ? "active" : "")" href="@item.Url" aria-current="@(item.IsActive ? "page" : null)">@item.Title</a>
+      </li>
+    }
+  </ul>
+</nav>

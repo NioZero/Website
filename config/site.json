@@ -1,0 +1,11 @@
+{
+  "siteName": "My Personal Site",
+  "baseUrl": "https://example.com",
+  "language": "en",
+  "author": "Your Name",
+  "description": "Personal website generated with .NET",
+  "contentDirectory": "content",
+  "templatesDirectory": "templates",
+  "assetsDirectory": "assets",
+  "outputDirectory": "output"
+}

@@ -1,0 +1,19 @@
+@using PersonalSite.Core.Rendering
+@model RenderContext
+@{
+    Layout = $"Layouts/{Model.Page.Metadata.Layout}.cshtml";
+}
+<article class="page">
+  <header class="page-header">
+    <p class="eyebrow">@Model.Site.Author</p>
+    <h1>@Model.Page.Metadata.Title</h1>
+    @if (!string.IsNullOrWhiteSpace(Model.Page.Metadata.Description))
+    {
+      <p class="description">@Model.Page.Metadata.Description</p>
+    }
+  </header>
+
+  <div class="content">
+    @Raw(Model.Page.HtmlContent)
+  </div>
+</article>

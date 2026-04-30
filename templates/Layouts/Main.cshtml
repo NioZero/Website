@@ -1,0 +1,32 @@
+@using PersonalSite.Core.Rendering
+@model RenderContext
+<!doctype html>
+<html lang="@Model.Site.Language">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@Model.Page.Metadata.Title - @Model.Site.SiteName</title>
+  <meta name="description" content="@(string.IsNullOrWhiteSpace(Model.Page.Metadata.Description) ? Model.Site.Description : Model.Page.Metadata.Description)">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-title" href="/">@Model.Site.SiteName</a>
+      @{
+        await IncludeAsync("Partials/Navigation.cshtml", Model);
+      }
+    </div>
+  </header>
+
+  <main class="container site-main">
+    @RenderBody()
+  </main>
+
+  @{
+    await IncludeAsync("Partials/Footer.cshtml", Model);
+  }
+
+  <script src="/assets/js/site.js"></script>
+</body>
+</html>

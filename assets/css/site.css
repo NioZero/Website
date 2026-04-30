@@ -1,0 +1,167 @@
+:root {
+  color-scheme: light;
+  --background: #f4f7f8;
+  --surface: #ffffff;
+  --text: #1d2433;
+  --muted: #5d6678;
+  --border: #d5dee2;
+  --accent: #1f6f68;
+  --accent-strong: #154d49;
+  --max-width: 960px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+.container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.site-title {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  background: #e7f0ed;
+  color: var(--accent-strong);
+}
+
+.site-main {
+  padding: 3rem 0 4rem;
+}
+
+.page {
+  max-width: 760px;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3.25rem;
+  line-height: 1.05;
+}
+
+.description {
+  max-width: 42rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.content {
+  font-size: 1.05rem;
+}
+
+.content h1 {
+  display: none;
+}
+
+.content h2,
+.content h3 {
+  margin-top: 2rem;
+  line-height: 1.2;
+}
+
+.content p,
+.content ul,
+.content ol {
+  margin: 1rem 0;
+}
+
+.content li + li {
+  margin-top: 0.4rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  background: #e8eef0;
+}
+
+.site-footer p {
+  margin: 0;
+  padding: 1.25rem 0;
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-main {
+    padding-top: 2rem;
+  }
+
+  h1 {
+    font-size: 2.35rem;
+  }
+}
