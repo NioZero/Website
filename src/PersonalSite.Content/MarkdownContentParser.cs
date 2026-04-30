@@ -82,7 +82,8 @@ public sealed class MarkdownContentParser(ILogger<MarkdownContentParser> logger)
             Order = metadata.Order,
             ShowInNavigation = metadata.ShowInNavigation,
             Layout = layout,
-            Template = template
+            Template = template,
+            Social = NormalizeSocialLinks(metadata.Social, filePath)
         };
     }
 
@@ -104,5 +105,47 @@ public sealed class MarkdownContentParser(ILogger<MarkdownContentParser> logger)
         }
 
         return Path.GetFileNameWithoutExtension(templateName);
+    }
+
+    private static List<SocialLink> NormalizeSocialLinks(IEnumerable<SocialLink> socialLinks, string filePath)
+    {
+        var normalizedLinks = new List<SocialLink>();
+
+        foreach (var socialLink in socialLinks ?? Enumerable.Empty<SocialLink>())
+        {
+            var name = socialLink.Name?.Trim() ?? string.Empty;
+            var url = socialLink.Url?.Trim() ?? string.Empty;
+            var label = socialLink.Label?.Trim() ?? string.Empty;
+            var icon = socialLink.Icon?.Trim() ?? string.Empty;
+
+            if (string.IsNullOrWhiteSpace(name) &&
+                string.IsNullOrWhiteSpace(url) &&
+                string.IsNullOrWhiteSpace(label) &&
+                string.IsNullOrWhiteSpace(icon))
+            {
+                continue;
+            }
+
+            if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) ||
+                (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps && uri.Scheme != Uri.UriSchemeMailto))
+            {
+                throw new InvalidOperationException($"Markdown file '{filePath}' has a social link with an invalid absolute URL: '{url}'.");
+            }
+
+            if (string.IsNullOrWhiteSpace(icon) || icon.Any(character => !char.IsLetterOrDigit(character) && character is not '-' and not '_'))
+            {
+                throw new InvalidOperationException($"Markdown file '{filePath}' has a social link with an invalid Boxicons class name: '{icon}'.");
+            }
+
+            normalizedLinks.Add(new SocialLink
+            {
+                Name = string.IsNullOrWhiteSpace(name) ? (string.IsNullOrWhiteSpace(label) ? url : label) : name,
+                Url = url,
+                Label = string.IsNullOrWhiteSpace(label) ? (string.IsNullOrWhiteSpace(name) ? url : name) : label,
+                Icon = icon
+            });
+        }
+
+        return normalizedLinks;
     }
 }

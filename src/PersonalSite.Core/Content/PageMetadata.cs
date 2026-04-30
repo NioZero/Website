@@ -9,4 +9,5 @@ public sealed class PageMetadata
     public bool ShowInNavigation { get; init; }
     public string Layout { get; init; } = "Main";
     public string Template { get; init; } = "Page";
+    public List<SocialLink> Social { get; init; } = new List<SocialLink>();
 }

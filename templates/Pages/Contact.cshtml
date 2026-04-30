@@ -1,0 +1,38 @@
+@using PersonalSite.Core.Rendering
+@model RenderContext
+@{
+    Layout = $"Layouts/{Model.Page.Metadata.Layout}.cshtml";
+}
+<article class="page">
+  <header class="page-header">
+    <p class="eyebrow">@Model.Site.Author</p>
+    <h1>@Model.Page.Metadata.Title</h1>
+    @if (!string.IsNullOrWhiteSpace(Model.Page.Metadata.Description))
+    {
+      <p class="description">@Model.Page.Metadata.Description</p>
+    }
+  </header>
+
+  <section class="content-page">
+    <div class="content">
+      @Raw(Model.Page.HtmlContent)
+    </div>
+  </section>
+
+  @if (Model.Page.Metadata.Social.Count > 0)
+  {
+    <section id="contact" class="contact-section" aria-label="Social links">
+      <ul class="social-links">
+        @foreach (var social in Model.Page.Metadata.Social)
+        {
+          <li class="social-link">
+            <i class="bx @social.Icon social-link-icon" aria-hidden="true"></i>
+            <a href="@social.Url" target="_blank" rel="noopener noreferrer" aria-label="@social.Name">
+              @social.Label
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</article>

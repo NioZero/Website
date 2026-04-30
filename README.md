@@ -64,6 +64,21 @@ template: "Page"
 
 The Markdown body below the closing `---` is converted to HTML with Markdig.
 
+Structured data belongs in Front Matter, not in the Markdown body. For example, a contact page can define social links like this:
+
+```yaml
+template: "Contact"
+social:
+  - name: "GitHub"
+    url: "https://github.com/NioZero"
+    label: "NioZero"
+    icon: "bxl-github"
+```
+
+The `icon` value is a Boxicons class name. The Markdown body should remain prose-only; the Razor template controls the HTML structure and `assets/css/site.css` controls the visual presentation.
+
+Social link URLs must be absolute `http`, `https`, or `mailto` URLs. Missing `social` metadata is treated as an empty list.
+
 ## Add a Page
 
 Create a new `.md` file under `content/`, add front matter, and choose a slug. A slug of `index` or an empty slug generates `/`. A slug of `writing` generates `/writing/` and writes `output/writing/index.html`.
